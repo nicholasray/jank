@@ -1,5 +1,5 @@
 // Import React
-import React from 'react';
+import React from "react";
 
 // Import Spectacle Core tags
 import {
@@ -9,27 +9,30 @@ import {
   Heading,
   ListItem,
   List,
+  Link,
   Quote,
   Slide,
   Text,
-} from 'spectacle';
+  Appear
+} from "spectacle";
 
 // Import theme
-import createTheme from 'spectacle/lib/themes/default';
+import createTheme from "spectacle/lib/themes/default";
+import "./responsive.css";
 
 // Require CSS
-require('normalize.css');
+require("normalize.css");
 
 const theme = createTheme(
   {
-    primary: 'white',
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
-    quaternary: '#CECECE',
+    primary: "#d6f3ee",
+    secondary: "#334c48",
+    tertiary: "b7c3c2",
+    quaternary: "#5cb5a6"
   },
   {
-    primary: 'Montserrat',
-    secondary: 'Helvetica',
+    primary: "Montserrat",
+    secondary: "Helvetica"
   }
 );
 
@@ -37,56 +40,57 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck
-        transition={['zoom', 'slide']}
+        transition={["zoom", "slide"]}
         transitionDuration={500}
         theme={theme}
       >
-        <Slide transition={['zoom']} bgColor="primary">
+        <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
+            Jank
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
+          <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
+            And ways we can deal with it
           </Text>
         </Slide>
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Typography
-          </Heading>
-          <Heading size={1} textColor="secondary">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="secondary">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="secondary">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="secondary">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="secondary">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="secondary">
-            Standard text
-          </Text>
+        <Slide transition={["fade"]} textColor="primary" bgColor="secondary">
+          <BlockQuote>
+            <Quote textSize={"3rem"}>
+              Jank is any stuttering, juddering or just plain halting that users
+              see when a site or app isn't keeping up with the refresh rate
+            </Quote>
+            <Cite>
+              <Link
+                href="http://jankfree.org"
+                textColor="primary"
+                target="_blank"
+              >
+                http://jankfree.org
+              </Link>
+            </Cite>
+          </BlockQuote>
         </Slide>
-        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Standard List
-          </Heading>
+        <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
           <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
+            <ListItem>
+              On devices, movement is simulated by a series of frames
+            </ListItem>
+            <Appear>
+              <ListItem>Most devices will refresh at 60 fps</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                60 fps means we must deliver a frame within 1/60 second ≈ 16 ms
+                or user will experience jank!
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
-        <Slide transition={['fade']} bgColor="secondary" textColor="primary">
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
+            <Quote>
+              A fast load time doesn't really matter if app is unuseable at
+              runtime
+            </Quote>
           </BlockQuote>
         </Slide>
       </Deck>
