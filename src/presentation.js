@@ -18,7 +18,11 @@ import {
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
+
 import "./responsive.css";
+import videoSrc from "./videos/record.mp4";
+import Video from "./components/Video";
+import styled from "styled-components";
 
 // Require CSS
 require("normalize.css");
@@ -35,6 +39,17 @@ const theme = createTheme(
     secondary: "Helvetica"
   }
 );
+
+const FullScreenContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default class Presentation extends React.Component {
   render() {
@@ -69,18 +84,25 @@ export default class Presentation extends React.Component {
             </Cite>
           </BlockQuote>
         </Slide>
+        <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+          <FullScreenContainer>
+            <Video playsInline autoPlay muted>
+              <source src={videoSrc} type="video/mp4" />
+            </Video>
+          </FullScreenContainer>
+        </Slide>
         <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+          <Heading size={6} fit caps textColor="secondary">
+            Let's say we have an animation
+          </Heading>
           <List>
-            <ListItem>
-              On devices, movement is simulated by a series of frames
-            </ListItem>
             <Appear>
-              <ListItem>Most devices will refresh at 60 fps</ListItem>
+              <ListItem>Most screens will refresh 60 times per second</ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                60 fps means we must deliver a frame within 1/60 second ≈ 16 ms
-                or user will experience jank!
+                The browser must deliver a frame within 1/60 second ≈ 16 ms or
+                the user will experience jank!
               </ListItem>
             </Appear>
           </List>
