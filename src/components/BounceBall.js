@@ -71,7 +71,7 @@ export default function({ color }) {
   const speed = useRef(500); // 500 pixels / second
   const lastUpdatedFrameBudget = useRef(startTime.current);
   const expectedTravelTime = useRef();
-  const rICId = useRef();
+  const rICQueue = useRef([]);
 
   useLayoutEffect(() => {
     containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
@@ -81,8 +81,10 @@ export default function({ color }) {
 
   useEffect(() => {
     return () => {
-      // cancel any pending requestIdleCallbacks
-      cancelIdleCallback(rICId.current);
+      rICQueue.current.forEach(id => {
+        // cancel any pending requestIdleCallbacks
+        cancelIdleCallback(id);
+      });
     };
   }, []);
 
@@ -91,17 +93,21 @@ export default function({ color }) {
 
     const now = performance.now();
 
-    rICId.current = requestIdleCallback(
-      deadline => {
-        if (
-          deadline.didTimeout ||
-          now - lastUpdatedFrameBudget.current >= 200
-        ) {
-          lastUpdatedFrameBudget.current = now;
-          setFrameBudget(deadline.timeRemaining().toFixed(0));
-        }
-      },
-      { timeout: 16 }
+    rICQueue.current.push(
+      requestIdleCallback(
+        deadline => {
+          rICQueue.current.shift();
+
+          if (
+            deadline.didTimeout ||
+            now - lastUpdatedFrameBudget.current >= 200
+          ) {
+            lastUpdatedFrameBudget.current = now;
+            setFrameBudget(deadline.timeRemaining().toFixed(0));
+          }
+        },
+        { timeout: 16 }
+      )
     );
 
     const direction =
