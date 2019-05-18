@@ -68,11 +68,14 @@ export default function({ color }) {
   const containerEl = useRef();
   const containerWidth = useRef();
   const startTime = useRef(performance.now());
-  const velocity = useRef(500); // 500 pixels / second
+  const speed = useRef(500); // 500 pixels / second
   const lastUpdatedFrameBudget = useRef(startTime.current);
+  const expectedTravelTime = useRef();
 
   useLayoutEffect(() => {
-    containerWidth.current = containerEl.current.clientWidth;
+    containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
+    expectedTravelTime.current =
+      containerWidth.current / (speed.current / 1000);
   }, []);
 
   useAnimationFrame(() => {
@@ -90,30 +93,18 @@ export default function({ color }) {
       { timeout: 16 }
     );
 
-    if (x + BALL_WIDTH >= containerWidth.current && velocity.current > 0) {
-      // reset the clock and change velocity direction
-      startTime.current = now;
-      velocity.current = -velocity.current;
-    }
+    const direction =
+      Math.floor(now / expectedTravelTime.current) % 2 === 0 ? 1 : -1;
+    const distanceFromEdge =
+      (now % expectedTravelTime.current) * (speed.current / 1000);
 
-    if (x <= 0 && velocity.current < 0) {
-      // reset the clock and change velocity direction
-      startTime.current = now;
-      velocity.current = Math.abs(velocity.current);
-    }
-
-    const elapsedTime = (now - startTime.current) / 1000;
-
-    if (velocity.current < 0) {
-      setX(
-        containerWidth.current - BALL_WIDTH + elapsedTime * velocity.current
-      );
+    if (direction === 1) {
+      setX(distanceFromEdge);
       return;
     }
 
-    if (velocity.current > 0) {
-      setX(elapsedTime * velocity.current);
-    }
+    // traveling backwards
+    setX(containerWidth.current - distanceFromEdge);
   });
 
   return (
