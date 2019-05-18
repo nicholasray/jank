@@ -71,7 +71,7 @@ export default function({ color }) {
   const speed = useRef(500); // 500 pixels / second
   const lastUpdatedFrameBudget = useRef(startTime.current);
   const expectedTravelTime = useRef();
-  const rIC = useRef();
+  const rICId = useRef();
 
   useLayoutEffect(() => {
     containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
@@ -82,7 +82,7 @@ export default function({ color }) {
   useEffect(() => {
     return () => {
       // cancel any pending requestIdleCallbacks
-      cancelIdleCallback(rIC.current);
+      cancelIdleCallback(rICId.current);
     };
   }, []);
 
@@ -91,7 +91,7 @@ export default function({ color }) {
 
     const now = performance.now();
 
-    rIC.current = requestIdleCallback(
+    rICId.current = requestIdleCallback(
       deadline => {
         if (now - lastUpdatedFrameBudget.current >= 200) {
           lastUpdatedFrameBudget.current = now;
