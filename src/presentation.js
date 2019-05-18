@@ -13,7 +13,9 @@ import {
   Quote,
   Slide,
   Text,
-  Appear
+  Appear,
+  Fill,
+  Layout
 } from "spectacle";
 
 // Import theme
@@ -24,6 +26,7 @@ import videoSrc from "./videos/record.mp4";
 import Video from "./components/Video";
 import styled from "styled-components";
 import BounceBall from "./components/BounceBall";
+import ScrollDiv from "./components/ScrollDiv";
 
 // Require CSS
 require("normalize.css");
@@ -97,6 +100,17 @@ export default function() {
             </ListItem>
           </Appear>
         </List>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <BounceBall color={theme.screen.colors.quaternary} />
+        <Heading size={6} fit caps textColor="secondary">
+          User input is also affected
+        </Heading>
+        <Layout>
+          <Fill>
+            <ScrollDiv />
+          </Fill>
+        </Layout>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
