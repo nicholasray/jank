@@ -126,7 +126,7 @@ export default function({ color }) {
       <SliderContainer>
         <Slider
           min={0}
-          max={100}
+          max={500}
           value={jank}
           onChange={value => {
             setJank(value);

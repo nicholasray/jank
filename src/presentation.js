@@ -91,8 +91,8 @@ export default function() {
           </Appear>
           <Appear>
             <ListItem>
-              The browser must deliver a frame within 1/60 second ≈ 16 ms or the
-              user will experience jank!
+              The browser must deliver a new frame within 1/60 second ≈ 16 ms.
+              If we exceed this budget, there will be jank!
             </ListItem>
           </Appear>
         </List>
