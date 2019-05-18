@@ -93,7 +93,10 @@ export default function({ color }) {
 
     rICId.current = requestIdleCallback(
       deadline => {
-        if (now - lastUpdatedFrameBudget.current >= 200) {
+        if (
+          deadline.didTimeout ||
+          now - lastUpdatedFrameBudget.current >= 200
+        ) {
           lastUpdatedFrameBudget.current = now;
           setFrameBudget(deadline.timeRemaining().toFixed(0));
         }
