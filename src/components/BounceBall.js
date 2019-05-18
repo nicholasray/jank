@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useRef } from "react";
+import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
@@ -71,6 +71,7 @@ export default function({ color }) {
   const speed = useRef(500); // 500 pixels / second
   const lastUpdatedFrameBudget = useRef(startTime.current);
   const expectedTravelTime = useRef();
+  const rIC = useRef();
 
   useLayoutEffect(() => {
     containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
@@ -78,12 +79,19 @@ export default function({ color }) {
       containerWidth.current / (speed.current / 1000);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      // cancel any pending requestIdleCallbacks
+      cancelIdleCallback(rIC.current);
+    };
+  }, []);
+
   useAnimationFrame(() => {
     runJank(jank);
 
     const now = performance.now();
 
-    requestIdleCallback(
+    rIC.current = requestIdleCallback(
       deadline => {
         if (now - lastUpdatedFrameBudget.current >= 200) {
           lastUpdatedFrameBudget.current = now;
