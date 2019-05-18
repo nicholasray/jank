@@ -10,6 +10,7 @@ const Ball = styled.div`
   width: ${BALL_WIDTH}px;
   height: ${BALL_WIDTH}px;
   border-radius: 100%;
+  will-change: transform;
 `;
 
 const Container = styled.div`
