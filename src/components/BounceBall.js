@@ -1,20 +1,30 @@
 import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
-import "./styles.css";
 
 const BALL_WIDTH = 80; // in px
 
+const bounce = keyframes`
+  // I want the animation to run on the main thread (not gpu) so that's why I'm
+  // using left here instead of transform: translateX
+  0%   { left: 0; }
+  50%  { left: calc(100% - 80px); }
+  100% { left: 0; }
+`;
+
 const Ball = styled.div`
+  position: relative;
   background: ${props => props.color};
   width: ${BALL_WIDTH}px;
   height: ${BALL_WIDTH}px;
   border-radius: 100%;
-  will-change: transform;
+  animation: ${bounce} 3.8s linear infinite;
+  will-change: left;
 `;
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   padding-top: 25px;
@@ -56,6 +66,7 @@ function useAnimationFrame(callback) {
   }, []);
 }
 
+// polyfill for ric
 function setupRIC() {
   window.requestIdleCallback =
     window.requestIdleCallback ||
@@ -65,7 +76,7 @@ function setupRIC() {
         cb({
           didTimeout: false,
           timeRemaining: function() {
-            return Math.max(0, 50 - (Date.now() - start));
+            return Math.max(0, 16.67 - (Date.now() - start));
           }
         });
       }, 1);
@@ -86,25 +97,15 @@ function runJank(duration) {
 }
 
 export default function({ color }) {
-  const [x, setX] = useState(0);
   const [frameBudget, setFrameBudget] = useState(0);
   const [jank, setJank] = useState(0);
   const containerEl = useRef();
-  const containerWidth = useRef();
   const startTime = useRef(performance.now());
-  const speed = useRef(500); // 500 pixels / second
   const lastUpdatedFrameBudget = useRef(startTime.current);
-  const expectedTravelTime = useRef();
   const rICQueue = useRef([]);
 
   useLayoutEffect(() => {
     setupRIC();
-  }, []);
-
-  useLayoutEffect(() => {
-    containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
-    expectedTravelTime.current =
-      containerWidth.current / (speed.current / 1000);
   }, []);
 
   useEffect(() => {
@@ -119,8 +120,6 @@ export default function({ color }) {
   useAnimationFrame(() => {
     runJank(jank);
 
-    const now = performance.now();
-
     rICQueue.current.push(
       requestIdleCallback(
         deadline => {
@@ -128,33 +127,20 @@ export default function({ color }) {
 
           if (
             deadline.didTimeout ||
-            now - lastUpdatedFrameBudget.current >= 200
+            performance.now() - lastUpdatedFrameBudget.current >= 200
           ) {
-            lastUpdatedFrameBudget.current = now;
+            lastUpdatedFrameBudget.current = performance.now();
             setFrameBudget(deadline.timeRemaining().toFixed(0));
           }
         },
         { timeout: 16 }
       )
     );
-
-    const direction =
-      Math.floor(now / expectedTravelTime.current) % 2 === 0 ? 1 : -1;
-    const distanceFromEdge =
-      (now % expectedTravelTime.current) * (speed.current / 1000);
-
-    if (direction === 1) {
-      setX(distanceFromEdge);
-      return;
-    }
-
-    // traveling backwards
-    setX(containerWidth.current - distanceFromEdge);
   });
 
   return (
     <Container ref={containerEl}>
-      <Ball color={color} style={{ transform: `translateX(${x}px)` }} />
+      <Ball color={color} />
       <div>
         <strong>Frame Budget</strong>:{" "}
         {frameBudget > 0 ? `${frameBudget} ms` : "😭"}
