@@ -100,7 +100,7 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <BlockQuote>
-          <Quote>Why am I doing this?</Quote>
+          <Quote>Why am I presenting this?</Quote>
         </BlockQuote>
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
