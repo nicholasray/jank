@@ -5,12 +5,19 @@ import "react-rangeslider/lib/index.css";
 
 const BALL_WIDTH = 80; // in px
 
-const bounce = keyframes`
-  // I want the animation to run on the main thread (not gpu) so that's why I'm
-  // using left here instead of transform: translateX
+const mainThreadAnimation = containerWidth => keyframes`
+  // I want the animation to run on the main thread so that's why I'm
+  // using left here instead of transform
   0%   { left: 0; }
-  50%  { left: calc(100% - 80px); }
+  50%  { left: ${containerWidth}px; }
   100% { left: 0; }
+`;
+
+const compositorAnimation = containerWidth => keyframes`
+  // animation with compositor thread
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(${containerWidth}px); }
+  100% { transform: translateX(0); }
 `;
 
 const Ball = styled.div`
@@ -19,8 +26,11 @@ const Ball = styled.div`
   width: ${BALL_WIDTH}px;
   height: ${BALL_WIDTH}px;
   border-radius: 100%;
-  animation: ${bounce} 3.8s linear infinite;
-  will-change: left;
+  animation: ${props =>
+      props.runOnCompositor
+        ? compositorAnimation(props.containerWidth)
+        : mainThreadAnimation(props.containerWidth)}
+    3.8s linear infinite;
 `;
 
 const Container = styled.div`
@@ -76,7 +86,7 @@ function setupRIC() {
         cb({
           didTimeout: false,
           timeRemaining: function() {
-            return Math.max(0, 16.67 - (Date.now() - start));
+            return Math.max(0, 50 - (Date.now() - start));
           }
         });
       }, 1);
@@ -96,16 +106,21 @@ function runJank(duration) {
   while (performance.now() - startTime < duration) {}
 }
 
-export default function({ color }) {
+function BounceBall({ color, runOnCompositor }) {
   const [frameBudget, setFrameBudget] = useState(0);
   const [jank, setJank] = useState(0);
   const containerEl = useRef();
+  const containerWidth = useRef(0);
   const startTime = useRef(performance.now());
   const lastUpdatedFrameBudget = useRef(startTime.current);
   const rICQueue = useRef([]);
 
   useLayoutEffect(() => {
     setupRIC();
+  }, []);
+
+  useLayoutEffect(() => {
+    containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
   }, []);
 
   useEffect(() => {
@@ -140,7 +155,11 @@ export default function({ color }) {
 
   return (
     <Container ref={containerEl}>
-      <Ball color={color} />
+      <Ball
+        runOnCompositor={runOnCompositor}
+        containerWidth={containerWidth.current}
+        color={color}
+      />
       <div>
         <strong>Frame Budget</strong>:{" "}
         {frameBudget > 0 ? `${frameBudget} ms` : "😭"}
@@ -155,9 +174,15 @@ export default function({ color }) {
           }}
         />
         <Caption>
-          <strong>Task Cost</strong>: {jank} ms
+          <strong>JS Cost Per Frame</strong>: {jank} ms
         </Caption>
       </SliderContainer>
     </Container>
   );
 }
+
+BounceBall.defaultProps = {
+  runOnCompositor: false
+};
+
+export default BounceBall;

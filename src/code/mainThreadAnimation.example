@@ -1,0 +1,5 @@
+@keyframes main-thread-animation {
+  0%   { left: 0; }
+  50%  { left: 900px; }
+  100% { left: 0; }
+}

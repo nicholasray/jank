@@ -29,14 +29,14 @@ const Toggler = styled.div`
   display: ${props => (props.show ? "block" : "none")};
 `;
 
+const divs = [];
+
+for (var i = 0; i < 1000; i++) {
+  divs.push(<div key={i}>{i}</div>);
+}
+
 export default () => {
   const [show, setShow] = useState(false);
-
-  const divs = [];
-
-  for (var i = 0; i < 1000; i++) {
-    divs.push(<div key={i}>{i}</div>);
-  }
 
   return (
     <Container onScroll={() => {}}>
