@@ -30,6 +30,7 @@ import fullJankPng from "./images/bounce-full-jank-profile.png";
 import frameAnatomySvg from "./images/anatomy-of-a-frame.svg";
 import compositorThreadExample from "./code/compositorAnimation.example";
 import mainThreadExample from "./code/mainThreadAnimation.example";
+import userPerceptionPng from "./images/user-perception.png";
 import phabTicket from "./images/phab-ticket.png";
 import Video from "./components/Video";
 import styled from "styled-components";
@@ -254,10 +255,12 @@ export default function() {
         </Layout>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-        <BigButton
-          activeColor={theme.screen.colors.quaternary}
-          inactiveColor={theme.screen.colors.tertiary}
-        />
+        <FullScreenContainer>
+          <Image src={userPerceptionPng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <BigButton activeColor={"#f95e5e"} inactiveColor={"#cf5ef9"} />
         <Heading size={6} fit caps textColor="secondary">
           Input responses must be within 100 ms or user can notice
         </Heading>

@@ -1,45 +1,22 @@
 // Import React
 import React, { useState } from "react";
 import styled from "styled-components";
+import OverflowDiv from "./OverflowDiv";
 
 const Container = styled.div`
   width: 100%;
   border-radius: 10px;
 `;
 
-const ContentContainer = styled.div`
-  position: relative;
-  height: 200px;
-  overflow: scroll;
-`;
-
-const Input = styled.input`
-  width: 100%;
-`;
-
-const Content = styled.div`
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  background-color: #08aeea;
-  background-image: linear-gradient(0deg, #08aeea 0%, #2af598 100%);
-`;
-
 const Toggler = styled.div`
   display: ${props => (props.show ? "block" : "none")};
 `;
-
-const divs = [];
-
-for (var i = 0; i < 1000; i++) {
-  divs.push(<div key={i}>{i}</div>);
-}
 
 export default () => {
   const [show, setShow] = useState(false);
 
   return (
-    <Container onScroll={() => {}}>
+    <Container>
       <button
         onClick={() => {
           setShow(!show);
@@ -49,10 +26,7 @@ export default () => {
         {show ? "Hide" : "Show"}
       </button>
       <Toggler show={show}>
-        <ContentContainer>
-          <Content>{divs}</Content>
-        </ContentContainer>
-        <Input placeholder="Search" type="text" />
+        <OverflowDiv />
       </Toggler>
     </Container>
   );
