@@ -94,6 +94,21 @@ export default function() {
         <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
           And ways we can deal with it
         </Text>
+        <Text margin="140px 0 0" textColor="secondary" size={1} bold>
+          Nick Ray
+        </Text>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <BlockQuote>
+          <Quote>Why am I doing this?</Quote>
+        </BlockQuote>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <BlockQuote>
+          <Quote>
+            A fast load time doesn't matter if a page is unuseable at runtime
+          </Quote>
+        </BlockQuote>
       </Slide>
       <Slide transition={["fade"]} textColor="primary" bgColor="secondary">
         <BlockQuote>
@@ -231,13 +246,6 @@ export default function() {
             />
           </Fill>
         </Layout>
-      </Slide>
-      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-        <BlockQuote>
-          <Quote>
-            A fast load time doesn't matter if a page is unuseable at runtime
-          </Quote>
-        </BlockQuote>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
