@@ -35,6 +35,7 @@ import Video from "./components/Video";
 import styled from "styled-components";
 import BounceBall from "./components/BounceBall";
 import ScrollDiv from "./components/ScrollDiv";
+import BigButton from "./components/BigButton";
 
 // Require CSS
 require("normalize.css");
@@ -253,6 +254,15 @@ export default function() {
             />
           </Fill>
         </Layout>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <BigButton
+          activeColor={theme.screen.colors.quaternary}
+          inactiveColor={theme.screen.colors.tertiary}
+        />
+        <Heading size={6} fit caps textColor="secondary">
+          Input responses must be within 100 ms or user will notice
+        </Heading>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>

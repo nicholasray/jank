@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
+import SliderContainer from "./SliderContainer";
 
 const BALL_WIDTH = 80; // in px
 
@@ -39,13 +40,6 @@ const Container = styled.div`
   height: 100%;
   padding-top: 25px;
   padding-bottom: 25px;
-`;
-
-const SliderContainer = styled.div`
-  padding-top: 50px;
-  .rangeslider-horizontal .rangeslider__fill {
-    background-color: #c57070;
-  }
 `;
 
 const Caption = styled.div`
