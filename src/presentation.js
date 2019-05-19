@@ -236,7 +236,6 @@ export default function() {
         <Layout>
           <Fill>
             <CodePane
-              lang="css"
               padding="0 20px 0 0"
               textSize="1.5rem"
               theme="light"
@@ -246,7 +245,6 @@ export default function() {
           </Fill>
           <Fill>
             <CodePane
-              lang="css"
               textSize="1.5rem"
               theme="light"
               source={compositorThreadExample}
