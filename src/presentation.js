@@ -30,6 +30,7 @@ import fullJankPng from "./images/bounce-full-jank-profile.png";
 import frameAnatomySvg from "./images/anatomy-of-a-frame.svg";
 import compositorThreadExample from "./code/compositorAnimation.example";
 import mainThreadExample from "./code/mainThreadAnimation.example";
+import phabTicket from "./images/phab-ticket.png";
 import Video from "./components/Video";
 import styled from "styled-components";
 import BounceBall from "./components/BounceBall";
@@ -73,6 +74,7 @@ const ContentContainer = styled.div`
 
 const FullImage = styled(Image)`
   width: 100%;
+  height: auto;
 `;
 
 const Credit = styled.div`
@@ -102,6 +104,11 @@ export default function() {
         <BlockQuote>
           <Quote>Why am I presenting this?</Quote>
         </BlockQuote>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <FullScreenContainer>
+          <Image src={phabTicket} />
+        </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <BlockQuote>
