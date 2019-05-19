@@ -257,6 +257,31 @@ export default function() {
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
         <FullScreenContainer>
           <Image src={userPerceptionPng} />
+          <Credit>
+            <Link
+              href="https://developers.google.com/web/fundamentals/performance/rail"
+              textColor="tertiary"
+              target="_blank"
+            >
+              "User Perception of Performance Delays”
+            </Link>
+            {" shared by "}
+            <Link
+              href="https://developers.google.com/readme/policies/"
+              textColor="tertiary"
+              target="_blank"
+            >
+              Google
+            </Link>
+            {" is licensed under "}
+            <Link
+              href="https://creativecommons.org/licenses/by/4.0/"
+              textColor="tertiary"
+              target="_blank"
+            >
+              CC BY 4.0
+            </Link>
+          </Credit>
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
