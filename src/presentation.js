@@ -261,7 +261,7 @@ export default function() {
           inactiveColor={theme.screen.colors.tertiary}
         />
         <Heading size={6} fit caps textColor="secondary">
-          Input responses must be within 100 ms or user will notice
+          Input responses must be within 100 ms or user can notice
         </Heading>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
