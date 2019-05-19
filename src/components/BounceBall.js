@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
+import "./styles.css";
 
 const BALL_WIDTH = 80; // in px
 
@@ -55,6 +56,28 @@ function useAnimationFrame(callback) {
   }, []);
 }
 
+function setupRIC() {
+  window.requestIdleCallback =
+    window.requestIdleCallback ||
+    function(cb) {
+      var start = Date.now();
+      return setTimeout(function() {
+        cb({
+          didTimeout: false,
+          timeRemaining: function() {
+            return Math.max(0, 50 - (Date.now() - start));
+          }
+        });
+      }, 1);
+    };
+
+  window.cancelIdleCallback =
+    window.cancelIdleCallback ||
+    function(id) {
+      clearTimeout(id);
+    };
+}
+
 function runJank(duration) {
   const startTime = performance.now();
 
@@ -73,6 +96,10 @@ export default function({ color }) {
   const lastUpdatedFrameBudget = useRef(startTime.current);
   const expectedTravelTime = useRef();
   const rICQueue = useRef([]);
+
+  useLayoutEffect(() => {
+    setupRIC();
+  }, []);
 
   useLayoutEffect(() => {
     containerWidth.current = containerEl.current.clientWidth - BALL_WIDTH;
