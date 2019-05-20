@@ -24,7 +24,6 @@ import {
 import createTheme from "spectacle/lib/themes/default";
 
 import "./base.css";
-import videoSrc from "./videos/record.mp4";
 import noJankPng from "./images/bounce-no-jank-profile.png";
 import fullJankPng from "./images/bounce-full-jank-profile.png";
 import frameAnatomySvg from "./images/anatomy-of-a-frame.svg";
@@ -37,6 +36,15 @@ import styled from "styled-components";
 import BounceBall from "./components/BounceBall";
 import ScrollDiv from "./components/ScrollDiv";
 import BigButton from "./components/BigButton";
+import obamaMultipleSectionsJankVideo from "./videos/obama-multiple-sections-jank.mp4";
+import obamaMultipleSectionsJankPng from "./images/obama-multiple-sections-jank.png";
+import obamaFullJankProfile from "./images/obama-load-profile-full.png";
+import obamaToggleJankVideo from "./videos/obama-toggle-jank.mp4";
+import obamaToggleJankPng from "./images/obama-toggle-jank.png";
+import obamaSearchJankVideo from "./videos/obama-search-jank.mp4";
+import obamaSearchJankPng from "./images/obama-search-jank.png";
+import obamaHamburgerJankVideo from "./videos/obama-hamburger-jank.mp4";
+import obamaHamburgerJankPng from "./images/obama-hamburger-jank.png";
 
 // Require CSS
 require("normalize.css");
@@ -104,7 +112,7 @@ export default function() {
           Jank
         </Heading>
         <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
-          And ways we can deal with it
+          And its impact
         </Text>
         <Text margin="140px 0 0" textColor="secondary" size={1} bold>
           Nick Ray
@@ -305,12 +313,73 @@ export default function() {
           </ListItem>
         </List>
       </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Heading size={6} fit caps textColor="primary">
+          Jank in the wild
+        </Heading>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaFullJankProfile} />
+        </FullScreenContainer>
+      </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
           <Video playsInline autoPlay muted>
-            <source src={videoSrc} type="video/mp4" />
+            <source src={obamaMultipleSectionsJankVideo} type="video/mp4" />
           </Video>
         </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaMultipleSectionsJankPng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Video playsInline autoPlay muted>
+            <source src={obamaToggleJankVideo} type="video/mp4" />
+          </Video>
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaToggleJankPng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Video playsInline autoPlay muted>
+            <source src={obamaSearchJankVideo} type="video/mp4" />
+          </Video>
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaSearchJankPng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Video playsInline autoPlay muted>
+            <source src={obamaHamburgerJankVideo} type="video/mp4" />
+          </Video>
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaHamburgerJankPng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Heading size={6} fit caps textColor="primary">
+          To be continued...
+        </Heading>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary">
+        <Heading size={6} fit caps textColor="secondary">
+          Thank you 👋
+        </Heading>
       </Slide>
     </Deck>
   );
