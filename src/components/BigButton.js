@@ -14,7 +14,6 @@ const Button = styled.button`
 
 const Caption = styled.div`
   font-size: 1.5rem;
-  margin-bottom: 100px;
 `;
 
 function runJank(duration) {

@@ -3,3 +3,7 @@
     font-size: 12px;
   }
 }
+
+ul {
+  list-style-position: outside;
+}

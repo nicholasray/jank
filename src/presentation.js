@@ -7,8 +7,8 @@ import {
   Cite,
   Deck,
   Heading,
-  ListItem,
-  List,
+  List as SpecList,
+  ListItem as SpecListItem,
   Link,
   Quote,
   Slide,
@@ -23,7 +23,7 @@ import {
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
-import "./responsive.css";
+import "./base.css";
 import videoSrc from "./videos/record.mp4";
 import noJankPng from "./images/bounce-no-jank-profile.png";
 import fullJankPng from "./images/bounce-full-jank-profile.png";
@@ -86,6 +86,14 @@ const Credit = styled.div`
   font-style: italic;
   text-align: left;
   align-self: flex-start;
+`;
+
+const List = styled(SpecList)`
+  list-style-position: outside !important;
+`;
+
+const ListItem = styled(SpecListItem)`
+  margin-bottom: 1rem;
 `;
 
 export default function() {
@@ -195,7 +203,7 @@ export default function() {
         <FullScreenContainer>
           <ContentContainer>
             <Heading size={6} fit caps textColor="secondary">
-              What goes on in a frame
+              What happens in a frame
             </Heading>
           </ContentContainer>
           <FullImage src={frameAnatomySvg} />
@@ -285,10 +293,17 @@ export default function() {
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-        <BigButton activeColor={"#f95e5e"} inactiveColor={"#cf5ef9"} />
-        <Heading size={6} fit caps textColor="secondary">
-          Input responses must be within 100 ms or user can notice
-        </Heading>
+        <BigButton activeColor={"#f95e5e"} inactiveColor={"#757b86"} />
+        <List margin="50px 0 0 0">
+          <ListItem textSize={"2rem"} fit textColor="secondary">
+            Clicks, typing, etc. must produce a frame within{" "}
+            <strong>100 ms</strong> or user can notice
+          </ListItem>
+          <ListItem textSize={"2rem"} fit textColor="secondary">
+            Scrolls &amp; animations must produce a frame within{" "}
+            <strong>16 ms</strong> or user can notice
+          </ListItem>
+        </List>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
