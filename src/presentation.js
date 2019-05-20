@@ -323,6 +323,11 @@ export default function() {
           <Image src={obamaFullJankProfile} />
         </FullScreenContainer>
       </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Heading size={6} fit caps textColor="primary">
+          Now more interesting cases...
+        </Heading>
+      </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
           <Video playsInline autoPlay muted>
@@ -373,7 +378,10 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <Heading size={6} fit caps textColor="primary">
-          To be continued...
+          To be continued...{" "}
+          <span role="img" aria-label="climber">
+            🧗
+          </span>
         </Heading>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary">
