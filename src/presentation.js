@@ -378,7 +378,10 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} bgColor="primary">
         <Heading size={6} fit caps textColor="secondary">
-          Thank you 👋
+          Thank you{" "}
+          <span role="img" aria-label="waving">
+            👋
+          </span>
         </Heading>
       </Slide>
     </Deck>
