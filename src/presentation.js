@@ -191,7 +191,7 @@ export default function() {
               </span>
             </Heading>
           </ContentContainer>
-          <FullImage src={noJankPng} />
+          <Image src={noJankPng} />
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
@@ -204,7 +204,7 @@ export default function() {
               </span>
             </Heading>
           </ContentContainer>
-          <FullImage src={fullJankPng} />
+          <Image src={fullJankPng} />
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
