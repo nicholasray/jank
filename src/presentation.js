@@ -326,7 +326,7 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <Heading size={6} fit caps textColor="primary">
-          Now more interesting cases...
+          And now more interesting cases...
         </Heading>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
