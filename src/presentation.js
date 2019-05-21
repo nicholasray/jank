@@ -131,7 +131,8 @@ export default function() {
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <BlockQuote>
           <Quote>
-            A fast load time doesn't matter if a page is unuseable at runtime
+            A fast load time is seriously negated if a page is unuseable at
+            runtime
           </Quote>
         </BlockQuote>
       </Slide>
