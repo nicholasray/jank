@@ -17,7 +17,7 @@ import {
   Fill,
   Layout,
   Image,
-  CodePane
+  CodePane as SpecCodePane
 } from "spectacle";
 
 // Import theme
@@ -102,6 +102,13 @@ const List = styled(SpecList)`
 
 const ListItem = styled(SpecListItem)`
   margin-bottom: 1rem;
+`;
+
+const CodePane = styled(SpecCodePane)`
+  pre {
+    font-size: 1.4rem !important;
+    height: 100%;
+  }
 `;
 
 export default function() {
@@ -255,7 +262,6 @@ export default function() {
           <Fill>
             <CodePane
               padding="0 20px 0 0"
-              textSize="1.5rem"
               theme="light"
               source={mainThreadExample}
               height="100%"
@@ -263,7 +269,6 @@ export default function() {
           </Fill>
           <Fill>
             <CodePane
-              textSize="1.5rem"
               theme="light"
               source={compositorThreadExample}
               height="100%"
