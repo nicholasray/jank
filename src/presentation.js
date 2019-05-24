@@ -106,7 +106,7 @@ const ListItem = styled(SpecListItem)`
 
 const CodePane = styled(SpecCodePane)`
   pre {
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;
     height: 100%;
   }
 `;
