@@ -40,11 +40,12 @@ import obamaMultipleSectionsJankVideo from "./videos/obama-multiple-sections-jan
 import obamaMultipleSectionsJankPng from "./images/obama-multiple-sections-jank.png";
 import obamaFullJankProfile from "./images/obama-load-profile-full.png";
 import obamaToggleJankVideo from "./videos/obama-toggle-jank.mp4";
-import obamaToggleJankPng from "./images/obama-toggle-jank.png";
-import obamaSearchJankVideo from "./videos/obama-search-jank.mp4";
-import obamaSearchJankPng from "./images/obama-search-jank.png";
+import obamaToggleJankLazyLoadOnPng from "./images/lazy-loading-on-obama.png";
+import obamaToggleJankLazyLoadOffPng from "./images/lazy-loading-off-obama.png";
+import obamaToggleLayoutThrashingPng from "./images/lazy-loading-layout-thrashing-obama.png";
 import obamaHamburgerJankVideo from "./videos/obama-hamburger-jank.mp4";
 import obamaHamburgerJankPng from "./images/obama-hamburger-jank.png";
+import obamaHamburgerCompositePng from "./images/obama-hamburger-composite.png";
 
 // Require CSS
 require("normalize.css");
@@ -53,7 +54,7 @@ const theme = createTheme(
   {
     primary: "#d6f3ee",
     secondary: "#334c48",
-    tertiary: "#7f5ef9",
+    tertiary: "#e0b4ff",
     quaternary: "#5cb5a6"
   },
   {
@@ -375,20 +376,29 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
-          <Image src={obamaToggleJankPng} />
+          <Image src={obamaToggleJankLazyLoadOnPng} />
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
-          <Video playsInline autoPlay muted>
-            <source src={obamaSearchJankVideo} type="video/mp4" />
-          </Video>
+          <Image src={obamaToggleJankLazyLoadOffPng} />
         </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
-          <Image src={obamaSearchJankPng} />
+          <Image src={obamaToggleLayoutThrashingPng} />
         </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Heading size={6} fit caps textColor="primary">
+          <Link
+            href="https://phabricator.wikimedia.org/T225946"
+            target="_blank"
+            textColor="tertiary"
+          >
+            https://phabricator.wikimedia.org/T225946
+          </Link>
+        </Heading>
       </Slide>
       <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
         <FullScreenContainer>
@@ -401,6 +411,22 @@ export default function() {
         <FullScreenContainer>
           <Image src={obamaHamburgerJankPng} />
         </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} textColor="secondary" bgColor="primary">
+        <FullScreenContainer>
+          <Image src={obamaHamburgerCompositePng} />
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Heading size={6} fit caps textColor="primary">
+          <Link
+            href="https://phabricator.wikimedia.org/T206354"
+            target="_blank"
+            textColor="tertiary"
+          >
+            https://phabricator.wikimedia.org/T206354
+          </Link>
+        </Heading>
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <Heading size={6} fit caps textColor="primary">

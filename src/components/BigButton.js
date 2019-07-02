@@ -37,7 +37,7 @@ export default function({ inactiveColor, activeColor }) {
         }}
         isOn={isOn}
       >
-        Start
+        Click me and I will change color
       </Button>
       <SliderContainer>
         <Slider
