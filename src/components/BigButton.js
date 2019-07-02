@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Slider from "react-rangeslider";
 import SliderContainer from "./SliderContainer";
-import OverflowDiv from "./OverflowDiv";
 
 const Button = styled.button`
   color: #fff;
@@ -40,7 +39,6 @@ export default function({ inactiveColor, activeColor }) {
       >
         Start
       </Button>
-      <OverflowDiv />
       <SliderContainer>
         <Slider
           min={0}
