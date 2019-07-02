@@ -139,7 +139,7 @@ export default function() {
         <BlockQuote>
           <Quote>
             The benefits of a fast load time are diminished if a page is
-            unuseable at runtime
+            unusable when loaded
           </Quote>
         </BlockQuote>
       </Slide>
