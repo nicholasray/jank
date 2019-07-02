@@ -149,6 +149,11 @@ export default function() {
           <Quote>Why am I presenting this?</Quote>
         </BlockQuote>
       </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <FullScreenContainer>
+          <Image src={phabTicket} />
+        </FullScreenContainer>
+      </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <BlockQuote>
           <Quote>
@@ -156,11 +161,6 @@ export default function() {
             unusable when loaded
           </Quote>
         </BlockQuote>
-      </Slide>
-      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-        <FullScreenContainer>
-          <Image src={phabTicket} />
-        </FullScreenContainer>
       </Slide>
       <Slide transition={["fade"]} textColor="primary" bgColor="secondary">
         <BlockQuote>
