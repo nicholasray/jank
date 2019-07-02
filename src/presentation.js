@@ -238,7 +238,7 @@ export default function() {
         <FullScreenContainer>
           <ContentContainer>
             <Heading size={6} fit caps textColor="secondary">
-              What happens in a frame
+              What happens in a frame?
             </Heading>
           </ContentContainer>
           <FullImage src={frameAnatomySvg} />
