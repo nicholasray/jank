@@ -210,6 +210,49 @@ export default function() {
       </Slide>
       <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
         <FullScreenContainer>
+          <Image src={userPerceptionPng} />
+          <Credit>
+            <Link
+              href="https://developers.google.com/web/fundamentals/performance/rail"
+              textColor="tertiary"
+              target="_blank"
+            >
+              "User Perception of Performance Delays”
+            </Link>
+            {" shared by "}
+            <Link
+              href="https://developers.google.com/readme/policies/"
+              textColor="tertiary"
+              target="_blank"
+            >
+              Google
+            </Link>
+            {" is licensed under "}
+            <Link
+              href="https://creativecommons.org/licenses/by/4.0/"
+              textColor="tertiary"
+              target="_blank"
+            >
+              CC BY 4.0
+            </Link>
+          </Credit>
+        </FullScreenContainer>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <BigButton activeColor={"#f95e5e"} inactiveColor={"#757b86"} />
+        <List margin="50px 0 0 0">
+          <ListItem textSize={"2rem"} fit textColor="secondary">
+            Clicks, typing, etc. must produce a frame within{" "}
+            <strong>100 ms</strong> or user can notice
+          </ListItem>
+          <ListItem textSize={"2rem"} fit textColor="secondary">
+            Scrolls &amp; animations must produce a frame within{" "}
+            <strong>16 ms</strong> or user can notice
+          </ListItem>
+        </List>
+      </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <FullScreenContainer>
           <ContentContainer>
             <Heading size={6} fit caps textColor="secondary">
               Without jank{" "}
@@ -294,49 +337,6 @@ export default function() {
             />
           </Fill>
         </Layout>
-      </Slide>
-      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-        <FullScreenContainer>
-          <Image src={userPerceptionPng} />
-          <Credit>
-            <Link
-              href="https://developers.google.com/web/fundamentals/performance/rail"
-              textColor="tertiary"
-              target="_blank"
-            >
-              "User Perception of Performance Delays”
-            </Link>
-            {" shared by "}
-            <Link
-              href="https://developers.google.com/readme/policies/"
-              textColor="tertiary"
-              target="_blank"
-            >
-              Google
-            </Link>
-            {" is licensed under "}
-            <Link
-              href="https://creativecommons.org/licenses/by/4.0/"
-              textColor="tertiary"
-              target="_blank"
-            >
-              CC BY 4.0
-            </Link>
-          </Credit>
-        </FullScreenContainer>
-      </Slide>
-      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-        <BigButton activeColor={"#f95e5e"} inactiveColor={"#757b86"} />
-        <List margin="50px 0 0 0">
-          <ListItem textSize={"2rem"} fit textColor="secondary">
-            Clicks, typing, etc. must produce a frame within{" "}
-            <strong>100 ms</strong> or user can notice
-          </ListItem>
-          <ListItem textSize={"2rem"} fit textColor="secondary">
-            Scrolls &amp; animations must produce a frame within{" "}
-            <strong>16 ms</strong> or user can notice
-          </ListItem>
-        </List>
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <Heading size={6} fit caps textColor="primary">
