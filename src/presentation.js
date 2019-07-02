@@ -125,6 +125,26 @@ export default function() {
           Nick Ray
         </Text>
       </Slide>
+      <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
+        <Heading size={6} fit caps textColor="secondary">
+          Browser compatibility
+        </Heading>
+        <List>
+          <ListItem>
+            Demos require{" "}
+            <Link
+              target="_blank"
+              href="https://caniuse.com/#search=requestIdle"
+            >
+              requestIdleCallback
+            </Link>
+          </ListItem>
+          <ListItem>Chrome has most support for it</ListItem>
+          <ListItem>
+            You should probably view this presentation in Chrome 47+
+          </ListItem>
+        </List>
+      </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
         <BlockQuote>
           <Quote>Why am I presenting this?</Quote>
