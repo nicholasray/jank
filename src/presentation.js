@@ -141,9 +141,7 @@ export default function() {
               most support for it
             </Link>
           </ListItem>
-          <ListItem>
-            You should probably view this presentation in Chrome 47+
-          </ListItem>
+          <ListItem>You should view this presentation in Chrome 47+</ListItem>
         </List>
       </Slide>
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
