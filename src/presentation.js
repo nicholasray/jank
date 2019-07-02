@@ -130,16 +130,16 @@ export default function() {
           Browser compatibility
         </Heading>
         <List>
+          <ListItem>Demos require `requestIdleCallback`</ListItem>
           <ListItem>
-            Demos require{" "}
+            Chrome has{" "}
             <Link
               target="_blank"
               href="https://caniuse.com/#search=requestIdle"
             >
-              requestIdleCallback
+              most support for it
             </Link>
           </ListItem>
-          <ListItem>Chrome has most support for it</ListItem>
           <ListItem>
             You should probably view this presentation in Chrome 47+
           </ListItem>
